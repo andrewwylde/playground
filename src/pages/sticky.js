@@ -5,23 +5,20 @@ require('../scss/sticky.scss'); //jshint ignore:line
 
 const raf = window.requestAnimationFrame;
 const caf = window.cancelAnimationFrame;
-let active = false;
-let currentlyReading;
-let topOffset;
 const bufferDistance = 50; // needed an arbitrary value within which it's acceptable to flop
 const stickyNav = document.querySelector('.nav-container');
 const dataDiv = document.querySelector('.data-div');
+const navItems = Array.from( document.querySelectorAll('.item') );
+const sectionItems = Array.from( document.querySelectorAll('section') );
+let active = false;
+let currentlyReading;
+let topOffset;
 
 function setup() {
   currentlyReading = document.querySelectorAll('section')[0];
   active = true;
   topOffset = stickyNav.getBoundingClientRect().top;
 }
-
-setup();
-
-const navItems = Array.from( document.querySelectorAll('.item') );
-const sectionItems = Array.from( document.querySelectorAll('section') );
 
 function updateDataDiv() {
   const { bottom, top, height } = getElHeight( currentlyReading );
@@ -91,4 +88,9 @@ function tick() {
   const ref = raf(tick);
 }
 
-tick();
+
+export default {
+  name: 'sticky',
+  start: tick,
+  setup
+};
