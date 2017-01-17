@@ -1,6 +1,15 @@
+$nav-height: 50px;
+$bg-green: rgba(46, 204, 113,1.0);
+$bg-blue: rgba(52, 152, 219,1.0);
+$bg-yellow: rgba(241, 196, 15,1.0);
+$bg-red: rgba(231, 76, 60,1);
+$white: rgb(255,255,255);
+$faded-white: rgba(255,255,255,.8);
+$shadow-height: 5px;
+$section-spacing: 100px;
 
 body {
-  background-color: rgba(46, 204, 113,1.0);
+  background-color: $bg-green;
   margin: 0;
   padding: 0;
 }
@@ -10,14 +19,17 @@ ul {
   padding: 0;
 }
 section {
-  background-color: rgba(255,255,255,.8);
+  background-color: $faded-white;
   width: 50%;
   max-width: 600px;
   height: 500px;
-  margin: 0 auto;
-  margin-top: 50px;
+  margin: $section-spacing auto;
   padding: 10px;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+
+  &:first-of-type {
+    margin-top: $nav-height + $shadow-height;
+  }
 }
 .data-div,
 .nav-container {
@@ -30,13 +42,13 @@ section {
 .nav-container {
   margin: 0;
   padding: 0;
-  height: 50px;
+  height: $nav-height;
   overflow: none;
   background: rgba(0,0,0,1);
 
   ul {
     height: 100%;
-    background: linear-gradient( rgba(46, 204, 113,.8), rgb(255,255,255));
+    background: $bg-red;
     list-style-type: none;
   }
 
@@ -53,7 +65,8 @@ section {
 
 
 .data-div {
-  right: 50px;
+  top: $nav-height;
+  right: 0;
   width: 10%;
   min-width: 300px;
   max-width: 500px;
