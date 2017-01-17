@@ -88,6 +88,9 @@ function tick() {
   const ref = raf(tick);
 }
 
+setup();
+tick();
+
 
 export default {
   name: 'sticky',
