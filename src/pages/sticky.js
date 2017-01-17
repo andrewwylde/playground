@@ -1,3 +1,4 @@
 console.log('sticky');
 
-require("../scss/heart.scss")
+// import the styles. gotta automate this soon :/
+require('../scss/sticky.scss'); //jshint ignore:line
