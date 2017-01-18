@@ -1,41 +1,39 @@
-$blue-bg: rgba(0,0,255,0.6);
-$white: rgb(255,255,255);
-$li-height: 50px;
+@import 'variables';
 
-body,
 a,
-ul,
-li {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  text-decoration: none;
+body,
+li,
+ul {
   color: $white;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
 }
 
 body {
-  background: $blue-bg;
+  background: $bg-blue;
 }
 
-
 ul.nav {
-  width: 20%;
   display: block;
+  width: 20%;
+
   li {
     background: rgba(0,0,0,.4);
     box-shadow: 1px 2px 10px rgba(0,0,0,0.3);
-    margin-top: 20px;
     color: rgb(255,255,255);
-    height: $li-height;
     display: block;
+    font-size: 24px;
+    height: $li-height;
+    line-height: $li-height;
+    margin-top: 20px;
+    text-align: center;
+    vertical-align: middle;
 
     a {
-      height: 100%;
       display: block;
-      text-align: center;
-      font-size: 24px;
-      line-height: $li-height;
-      vertical-align: middle;
+      height: 100%;
     }
   }
 }

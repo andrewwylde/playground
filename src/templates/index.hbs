@@ -2,9 +2,17 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Index</title>
+    <title>100 Pots</title>
   </head>
   <body>
+    <h1>100 Pots</h1>
+    <ul class="nav">
+      {{#each pages}}
+        <li>
+          <a href="./{{this}}.html">{{this}}</a>
+        </li>
+      {{/each}}
+    </ul>
 
   </body>
 </html>

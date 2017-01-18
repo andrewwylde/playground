@@ -1,12 +1,4 @@
-$nav-height: 50px;
-$bg-green: rgba(46, 204, 113,1.0);
-$bg-blue: rgba(52, 152, 219,1.0);
-$bg-yellow: rgba(241, 196, 15,1.0);
-$bg-red: rgba(231, 76, 60,1);
-$white: rgb(255,255,255);
-$faded-white: rgba(255,255,255,.8);
-$shadow-height: 5px;
-$section-spacing: 100px;
+@import 'variables';
 
 body {
   background-color: $bg-green;

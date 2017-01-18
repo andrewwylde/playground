@@ -1,3 +1,5 @@
 export const log = 'hello world, biznitch!';
-
-require('../scss/main.scss')
+export const pages = [
+  'heart',
+  'sticky'
+];
