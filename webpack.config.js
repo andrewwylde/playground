@@ -1,31 +1,12 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const walk = require('fs-walk');
 
-const pages = {};
-walk.walkSync( 'src/pages', ( base, file, stat ) => {
-  if( stat.isDirectory() ) {
-    return;
-  } else {
-    const str = `./${base}/${file}`;
-    pages[ `${ file.replace( '.js','' ) }` ] = str;
-  }
-}, err => console.log( err ) );
+const generatePages = require('./config/pages');
+const generatePlugins = require('./config/plugins');
 
-const entry = Object.assign( { app: './src/app.js' }, pages );
+const pages = generatePages();
+const entry = Object.assign({ app: './src/app.js' }, pages );
 
-const plugins = [];
-
-for ( let singleEntry in pages ) {
-  const newHTML = new HtmlWebpackPlugin({
-    title: `${singleEntry}`,
-    filename: `${singleEntry}.html`,
-    template: `!!handlebars!src/templates/${singleEntry}.hbs`,
-    chunks: [`${singleEntry}`]
-  });
-  plugins.push( newHTML );
-}
-
+const plugins = generatePlugins( pages );
 module.exports = {
   entry,
   output: {
@@ -45,13 +26,12 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      chunks:['app']
-    }),
-    ...plugins
-  ],
+  plugins,
   devServer: {
-    inline: true
+    inline: true,
+    open: true,
+    hot: true,
+    lazy: false,
+    contentBase: './dist'
   }
 };
