@@ -8,7 +8,7 @@ function generatePlugins( pages ) {
     const newHTML = new HtmlWebpackPlugin( {
       title: `${singleEntry}`,
       filename: `${singleEntry}.html`,
-      template: `!!handlebars!src/templates/${singleEntry}.hbs`,
+      template: `!!handlebars-loader!src/templates/${singleEntry}.hbs`,
       chunks: [ `${singleEntry}` ]
     } );
 

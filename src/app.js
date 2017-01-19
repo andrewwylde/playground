@@ -1,4 +1,4 @@
-const template = require('./templates/index.hbs');
+import template from './templates/index.hbs';
 import { pages } from './lib';
 
 require('./scss/main.scss');
