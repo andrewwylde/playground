@@ -1,6 +1,6 @@
 var WebpackDevServer = require( 'webpack-dev-server' );
 var webpack = require( 'webpack' );
-const config = require( '../webpack.config' );
+const config = require( '../webpack.config.babel.js' );
 
 var compiler = webpack( config );
 
@@ -33,17 +33,18 @@ const defaults = {
   // and has many other use cases (see https://github.com/webpack/webpack-dev-server/pull/127 ).
 
   // setup: function( app ) {
-    // Here you can access the Express app object and add your own custom middleware to it.
-    // For example, to define custom handlers for some paths:
-    // app.get('/some/path', function(req, res) {
-    //   res.json({ custom: 'response' });
-    // });
+  // Here you can access the Express app object and add your own custom middleware to it.
+  // For example, to define custom handlers for some paths:
+  // app.get('/some/path', function(req, res) {
+  //   res.json({ custom: 'response' });
+  // });
   // },
 
   // pass [static options](http://expressjs.com/en/4x/api.html#express.static) to inner express server
   // staticOptions: {},
 
   clientLogLevel: 'info',
+  displayErrorDetails: true,
   // Control the console log messages shown in the browser when using inline mode. Can be `error`, `warning`, `info` or `none`.
 
   // webpack-dev-middleware options
@@ -69,5 +70,5 @@ const opts = Object.assign( defaults, config.devServer );
 var server = new WebpackDevServer( compiler, opts );
 
 server.listen( 8080, 'localhost', () => {
-  console.log( 'now connected on http://localhost:8080')
+  console.log( 'now connected on http://localhost:8080' )
 } );
