@@ -30,6 +30,7 @@ const defaults = {
 
 export default opts => {
   return new Promise( ( resolve, reject ) => {
-    getConfig().then( opts => resolve( Object.assign( defaults, opts ) ) );
+    getConfig()
+    .then( opts => resolve( Object.assign( defaults, opts ) ) );
   });
 };
