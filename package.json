@@ -4,14 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node ./server/dev-server",
-    "build": "./node_modules/.bin/webpack",
+    "start": "./node_modules/.bin/webpack-dev-server --config webpack.config.babel.js --open --hot",
+    "build": "./node_modules/.bin/webpack --config webpack.config.babel.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-cli": "^6.18.0",
     "babel-core": "6.21.0",
     "babel-loader": "6.2.10",
     "babel-preset-env": "1.1.8",
@@ -24,6 +25,6 @@
     "sass-loader": "4.1.1",
     "style-loader": "0.13.1",
     "webpack": "2.2.0",
-    "webpack-dev-server": "1.16.2"
+    "webpack-dev-server": "2.2.0"
   }
 }
