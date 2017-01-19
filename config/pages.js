@@ -1,17 +1,32 @@
 const walk = require('fs-walk');
 
+function endWalk( err, res, rej, pages ) {
+  if ( err ) {
+    console.error( err );
+    rej( err );
+  } else {
+    res( pages );
+  }
+}
+
 function generatePages() {
+
   const pages = {};
-  // walk through src/pages directory
-  walk.walkSync( 'src/pages', ( base, file, stat ) => {
-    if( !stat.isDirectory() ) {
 
-      pages[ `${ file.replace( '.js','' ) }` ] = `./${base}/${file}`;
-      return;
+  return new Promise( ( resolve, reject ) => {
 
-    }
-  }, err => console.log( err ) );
-  return pages;
+    // walk through src/pages directory
+    walk.walk( 'src/pages', ( base, file, stat, next ) => {
+      if( !stat.isDirectory() ) {
+
+        pages[ `${ file.replace( '.js','' ) }` ] = `./${base}/${file}`;
+        next();
+
+      }
+    }, err => {
+      endWalk( err, resolve, reject, pages );
+    }  );
+  });
 }
 
 module.exports = generatePages;

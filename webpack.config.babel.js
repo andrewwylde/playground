@@ -1,14 +1,7 @@
-const path = require('path');
+import path from 'path';
+import getConfig from './config';
 
-const generatePages = require('./config/pages');
-const generatePlugins = require('./config/plugins');
-
-const pages = generatePages();
-const entry = Object.assign({ app: './src/app.js' }, pages );
-
-const plugins = generatePlugins( pages );
-module.exports = {
-  entry,
+const defaults = {
   output: {
     path: path.resolve( __dirname, 'dist' ),
     publicPath: '/static',
@@ -19,14 +12,13 @@ module.exports = {
       {
         test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'
       },
-      { test: /\.hbs$/, loader: 'handlebars' },
+      { test: /\.hbs$/, loader: 'handlebars-loader' },
       {
         test: /\.scss$/,
         loaders: [ 'style-loader', 'css-loader', 'sass-loader' ]
       }
     ]
   },
-  plugins,
   devServer: {
     inline: true,
     open: true,
@@ -34,4 +26,10 @@ module.exports = {
     lazy: false,
     contentBase: './dist'
   }
+};
+
+export default opts => {
+  return new Promise( ( resolve, reject ) => {
+    getConfig().then( opts => resolve( Object.assign( defaults, opts ) ) );
+  });
 };
